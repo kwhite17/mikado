@@ -1,0 +1,26 @@
+{
+  "name": "mikado",
+  "authors": [
+    "kwhite17 <kevinwhite1710@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper-elements": "PolymerElements/paper-elements#~1.0.6",
+    "iron-elements": "PolymerElements/iron-elements#~1.0.4",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#~1.1.0",
+    "web-component-tester": "Polymer/web-component-tester#~3.4.0",
+    "paper-dialog-scrollable": "PolymerElements/paper-dialog-scrollable#~1.1.0"
+  }
+}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="../components/webcomponentsjs/webcomponents.min.js"></script>
+  <script src="../components/web-component-tester/browser.js"></script>
+  <link rel="import" href="../elements/chat-window/chat-window.html">
+</head>
+<body>
+  <chat-window id="fixture"></chat-window>
+  <script>
+    suite('chat-window', function() {
+      test('sanity check passing', function() {
+        assert.isTrue(true);
+      });
+
+      test('add single row to text area', function() {
+        var chatWindow = document.querySelector('#fixture');
+        var initialRows = chatWindow.querySelector('#chatbox').rows.length;
+        console.log("Rows ", initialRows);
+        chatWindow.addRow("Hello World!");
+        assert.equal(initialRows + 1, chatWindow.querySelector('#chatbox').rows.length);
+      })
+    });
+  </script>
+</body>
+</html>
