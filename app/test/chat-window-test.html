@@ -1,11 +1,13 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <script src="../components/webcomponentsjs/webcomponents.min.js"></script>
   <script src="../components/web-component-tester/browser.js"></script>
   <link rel="import" href="../elements/chat-window/chat-window.html">
 </head>
+
 <body>
   <chat-window id="fixture"></chat-window>
   <script>
@@ -17,11 +19,34 @@
       test('add single row to text area', function() {
         var chatWindow = document.querySelector('#fixture');
         var initialRows = chatWindow.querySelector('#chatbox').rows.length;
-        console.log("Rows ", initialRows);
         chatWindow.addRow("Hello World!");
         assert.equal(initialRows + 1, chatWindow.querySelector('#chatbox').rows.length);
+      });
+
+      test('selecting send adds row to the text area', function() {
+        var chatWindow = document.querySelector('#fixture');
+        var chatBox = chatWindow.querySelector('#chatbox');
+        var initialRows = chatBox.rows.length;
+        var sendButton = chatWindow.querySelector('paper-button');
+
+        sendButton.click();
+        assert.equal(initialRows + 1, chatBox.rows.length);
+      });
+
+      test('selecting send adds text from input field into a new row', function() {
+        var chatWindow = document.querySelector('#fixture');
+        var chatBox = chatWindow.querySelector('#chatbox');
+        var input = chatWindow.querySelector('paper-input');
+        var sendButton = chatWindow.querySelector('paper-button');
+        var lastRow;
+
+        input.value = "The Adventures of Whito-san";
+        sendButton.click();
+        lastRow = chatBox.rows[chatBox.rows.length - 1]
+        assert.equal("The Adventures of Whito-san", lastRow.cells[lastRow.cells.length - 1].innerHTML);
       })
     });
   </script>
 </body>
+
 </html>

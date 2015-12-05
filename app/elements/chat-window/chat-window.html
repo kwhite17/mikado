@@ -35,7 +35,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <table id="chatbox"></table>
     <div>
       <paper-input label="Enter a message here"></paper-input>
-      <paper-button raised>Send</paper-button>
+      <paper-button raised on-click="sendMessage">Send</paper-button>
     </div>
   </template>
   <script>
@@ -58,6 +58,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           var row = table.insertRow(-1);
           var cell = row.insertCell(0);
           cell.innerHTML = message;
+        },
+
+        sendMessage: function() {
+          this.addRow(this.$$('paper-input').value);
         }
       });
     })();
