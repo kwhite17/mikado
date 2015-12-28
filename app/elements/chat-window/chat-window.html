@@ -96,7 +96,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         _buildSocket: function() {
           var self = this;
-          var socket = new WebSocket("ws://localhost:4000/socket");
+          var socket = new WebSocket("ws://mikado.herokuapp.com/socket");
           socket.onopen = function() {
             this.send("Client connected");
           }
