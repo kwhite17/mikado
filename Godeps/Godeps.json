@@ -1,0 +1,10 @@
+{
+	"ImportPath": "github.com/kwhite17/mikado",
+	"GoVersion": "go1.5",
+	"Deps": [
+		{
+			"ImportPath": "github.com/gorilla/websocket",
+			"Rev": "844dd6d40e1a9215ef4c8a204bfc839fcf5dd5dd"
+		}
+	]
+}
