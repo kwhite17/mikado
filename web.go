@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/websocket"
 )
@@ -43,5 +44,5 @@ func main() {
 	handler := wsHandler{connections: connections}
 	http.Handle("/", http.FileServer(http.Dir("./app")))
 	http.Handle("/socket", handler)
-	log.Fatalf("%s", http.ListenAndServe(":4000", nil))
+	log.Fatalf("%s", http.ListenAndServe(":"+os.Getenv("PORT"), nil))
 }
