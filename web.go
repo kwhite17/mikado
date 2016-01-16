@@ -44,5 +44,7 @@ func main() {
 	handler := wsHandler{connections: connections}
 	http.Handle("/", http.FileServer(http.Dir("./app")))
 	http.Handle("/socket", handler)
-	log.Fatalf("%s", http.ListenAndServe(":"+os.Getenv("PORT"), nil))
+	s := &http.Server{Addr: ":" + os.Getenv("PORT")}
+	log.Printf("Address: %v", s.Addr)
+	log.Fatalf("%s", s.ListenAndServe())
 }
