@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/gorilla/websocket"
+	"github.com/kwhite17/mikado/server"
 )
 
 type wsHandler struct {
@@ -40,11 +41,13 @@ func sendMessage(conns map[*websocket.Conn]bool, source *websocket.Conn) {
 }
 
 func main() {
-	var connections = make(map[*websocket.Conn]bool)
-	handler := wsHandler{connections: connections}
-	http.Handle("/", http.FileServer(http.Dir("./app")))
-	http.Handle("/socket", handler)
-	s := &http.Server{Addr: ":" + os.Getenv("PORT")}
-	log.Printf("Address: %v", s.Addr)
-	log.Fatalf("%s", s.ListenAndServe())
+	// var connections = make(map[*websocket.Conn]bool)
+	// handler := wsHandler{connections: connections}
+	// http.Handle("/", http.FileServer(http.Dir("./app")))
+	// http.Handle("/socket", handler)
+	// s := &http.Server{Addr: ":" + os.Getenv("PORT")}
+	s := server.BuildChatServer(":" + os.Getenv("PORT"))
+	log.Printf("Address: %v\n", s.Addr)
+	log.Println(s.Handler)
+	log.Fatalf("%s\n", s.ListenAndServe())
 }
