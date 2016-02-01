@@ -46,7 +46,7 @@ func BuildChatServer(address string) *http.Server {
 
 func BuildServeMux() *http.ServeMux {
 	serveMux := http.NewServeMux()
-	serveMux.Handle("/", http.FileServer(http.Dir("../app")))
+	serveMux.Handle("/", http.FileServer(http.Dir("./app")))
 	serveMux.Handle("/socket", BuildHandler())
 	return serveMux
 }
